@@ -1,0 +1,46 @@
+---
+import Laptop from "../icons/Laptop.astro";
+import Gamepad2 from "../icons/Gamepad2.astro";
+import Tv from "../icons/Tv.astro";
+import Smartphone from "../icons/Smartphone.astro";
+import Printer from "../icons/Printer.astro";
+import Zap from "../icons/Zap.astro";
+import MapPin from "../icons/MapPin.astro";
+
+const services = [
+  { icon: Laptop, label: "PCs / Laptops", description: "Reparación completa de computadoras y laptops", benefit: "Recupera tu equipo sin perder información" },
+  { icon: Gamepad2, label: "Consolas", description: "Reparación de Nintendo, PlayStation, Xbox", benefit: "Vuelve a jugar sin interrupciones" },
+  { icon: Tv, label: "TVs", description: "Servicio técnico para televisores", benefit: "Imagen y sonido como nuevo" },
+  { icon: Smartphone, label: "Celulares", description: "Reparación de pantallas y componentes", benefit: "Pantallas y fallas resueltas en horas" },
+  { icon: Printer, label: "Impresoras", description: "Mantenimiento y reparación de impresoras", benefit: "Imprime sin fallas ni atascos" },
+  { icon: Zap, label: "Diagnóstico", description: "Diagnóstico gratuito de tu dispositivo", benefit: "Detectamos el problema en minutos" },
+  { icon: MapPin, label: "A Domicilio", description: "Servicio a domicilio en Lima", benefit: "Vamos hasta tu ubicación en Lima" },
+];
+---
+
+<section id="services" class="py-20 px-4 sm:px-6 lg:px-8 bg-card/30 border-t border-border">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl sm:text-5xl font-bold font-montserrat mb-4">
+        Nuestros Servicios
+      </h2>
+      <p class="text-foreground/60 text-lg">
+        Reparamos todo tipo de dispositivos electrónicos
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-4 gap-6">
+      {services.map((service) => {
+        const Icon = service.icon;
+        return (
+          <div class="group p-6 rounded-xl border border-border/50 bg-background transition-all cursor-pointer hover:border-primary/50 hover:bg-primary/20 hover:shadow-lg hover:shadow-primary/10 hover:-translate-y-1">
+            <Icon class="w-8 h-8 mb-3 text-foreground/40 transition-colors group-hover:text-primary" />
+            <h3 class="font-semibold font-montserrat mb-2">{service.label}</h3>
+            <p class="text-sm text-foreground/60 mb-3">{service.description}</p>
+            <div class="text-sm font-medium text-primary">{service.benefit}</div>
+          </div>
+        );
+      })}
+    </div>
+  </div>
+</section>

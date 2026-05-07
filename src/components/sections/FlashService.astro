@@ -1,0 +1,145 @@
+---
+import ArrowRight from "../icons/ArrowRight.astro";
+import Bolt from "../icons/Bolt.astro";
+import AlertCircle from "../icons/AlertCircle.astro";
+
+const wa = import.meta.env.PUBLIC_WHATSAPP;
+---
+
+<section class="py-20 px-4 sm:px-6 lg:px-8 bg-card border-y border-border">
+  <div class="max-w-6xl mx-auto">
+    <div
+      class="relative bg-linear-to-br from-card to-card/50 border-2 border-primary/50 rounded-2xl p-8 sm:p-12 overflow-hidden"
+    >
+      {/* Glow effect background */}
+      <div
+        class="absolute inset-0 bg-linear-to-r from-primary/5 via-transparent to-primary/5 pointer-events-none"
+      >
+      </div>
+
+      <div class="relative z-10">
+        {/* Badge */}
+        <div
+          class="inline-flex items-center gap-2 bg-primary/20 text-primary px-4 py-2 rounded-full text-sm font-semibold mb-6 border border-primary/50"
+        >
+          <Bolt class="w-4 h-4" />
+          ATENCIÓN RÁPIDA
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+          <div class="space-y-6">
+            <div>
+              <h2 class="text-4xl sm:text-5xl font-bold font-montserrat mb-3">
+                Servicio Flash – <span class="text-primary"
+                  >Atención Inmediata</span
+                >
+              </h2>
+              <p class="text-lg text-foreground/80 font-medium">
+                ¿Tu equipo dejó de funcionar y lo necesitas ahora mismo?
+              </p>
+            </div>
+
+            <p class="text-foreground/70 text-base leading-relaxed">
+              Vamos directamente a tu domicilio y resolvemos el problema en el
+              acto. Sin esperas, sin complicaciones.
+            </p>
+
+            <div class="space-y-4">
+              <div class="flex gap-3">
+                <div class="text-primary shrink-0">✓</div>
+                <div>
+                  <div class="font-semibold">Atención el mismo día</div>
+                  <div class="text-sm text-foreground/60">
+                    Resolvemos tu problema hoy
+                  </div>
+                </div>
+              </div>
+              <div class="flex gap-3">
+                <div class="text-primary shrink-0">✓</div>
+                <div>
+                  <div class="font-semibold">Servicio a domicilio en Lima</div>
+                  <div class="text-sm text-foreground/60">
+                    Vamos a tu ubicación
+                  </div>
+                </div>
+              </div>
+              <div class="flex gap-3">
+                <div class="text-primary shrink-0">✓</div>
+                <div>
+                  <div class="font-semibold">
+                    Técnicos listos para emergencias
+                  </div>
+                  <div class="text-sm text-foreground/60">
+                    Expertos en reparación rápida
+                  </div>
+                </div>
+              </div>
+              <div class="flex gap-3">
+                <div class="text-primary shrink-0">✓</div>
+                <div>
+                  <div class="font-semibold">
+                    Diagnóstico y solución inmediata
+                  </div>
+                  <div class="text-sm text-foreground/60">
+                    Sin demoras innecesarias
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="bg-primary/10 border border-primary/50 rounded-lg p-4 mt-6"
+            >
+              <div class="flex items-start gap-3">
+                <AlertCircle class="w-5 h-5 text-primary shrink-0 mt-0.5" />
+                <div>
+                  <div class="font-semibold text-primary mb-1">
+                    Disponible de 8:00 AM a 11:00 PM
+                  </div>
+                  <p class="text-sm text-foreground/70">
+                    Atención rápida dentro de horario
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-4 pt-4">
+              <div
+                class="bg-primary text-primary-foreground rounded-lg font-semibold hover:shadow-lg hover:shadow-primary/50 transition-all flex items-center justify-center gap-2 group"
+              >
+                <a
+                  href={`https://wa.me/${wa}`}
+                  class="flex items-center gap-2 px-8 py-3"
+                >
+                  Atención inmediata <ArrowRight
+                    class="w-4 h-4 group-hover:translate-x-1 transition-transform"
+                  />
+                </a>
+              </div>
+              <div
+                class="border border-primary/50 text-primary rounded-lg font-semibold hover:bg-primary/10 transition-colors"
+              >
+                <a
+                  href={`https://wa.me/${wa}`}
+                  class="flex items-center gap-2 px-8 py-3"
+                >
+                  Contactar por WhatsApp
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="relative h-80 rounded-xl overflow-hidden border border-primary/30 hidden md:block"
+          >
+            <div
+              class="absolute inset-0 bg-linear-to-br from-primary/20 via-transparent to-primary/10 flex items-center justify-center"
+            >
+              <Bolt class="w-32 h-32 text-primary/30" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

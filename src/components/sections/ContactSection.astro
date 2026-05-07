@@ -1,0 +1,115 @@
+---
+import MapPin from "../icons/MapPin.astro";
+import Clock from "../icons/Clock.astro";
+import Phone from "../icons/Phone.astro";
+import MessageCircle from "../icons/MessageCircle.astro";
+import ArrowRight from "../icons/ArrowRight.astro";
+
+const wa = import.meta.env.PUBLIC_WHATSAPP;
+const address = import.meta.env.PUBLIC_ADDRESS;
+const contactInfo = [
+  {
+    icon: MapPin,
+    title: "Ubicación",
+    content: `${address}<br />San Martín de Porres, Lima`,
+    isHtml: true,
+  },
+  {
+    icon: Clock,
+    title: "Horario",
+    content: "8:00 AM - 11:00 PM<br />Todos los días",
+    isHtml: true,
+  },
+  {
+    icon: Phone,
+    title: "Teléfono",
+    href: `https://wa.me/${wa}`,
+    linkText: `+${wa}`,
+  },
+  {
+    icon: MessageCircle,
+    title: "WhatsApp",
+    href: `https://wa.me/${wa}`,
+    linkText: "Escríbenos aquí",
+  },
+];
+---
+
+<section
+  id="contact"
+  class="py-20 px-4 sm:px-6 lg:px-8 bg-card/30 border-t border-border"
+>
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl sm:text-5xl font-bold font-montserrat mb-4">
+        ¿Necesitas tu equipo funcionando hoy mismo?
+      </h2>
+      <p class="text-xl text-foreground/70 font-medium">
+        Escríbenos ahora y te atendemos en minutos
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-4 gap-6 mb-12">
+      {
+        contactInfo.map((item) => {
+          const Icon = item.icon;
+          return (
+            <div class="bg-card border border-border/50 rounded-xl p-8 text-center hover:border-primary/50 transition-colors">
+              <Icon class="w-8 h-8 text-primary mx-auto mb-4" />
+              <h3 class="font-semibold font-montserrat mb-2">{item.title}</h3>
+              {item.isHtml ? (
+                <p class="text-sm text-foreground/70" set:html={item.content} />
+              ) : (
+                <p class="text-sm text-foreground/70">
+                  <a
+                    href={item.href}
+                    class="hover:text-primary transition-colors font-medium"
+                  >
+                    {item.linkText}
+                  </a>
+                </p>
+              )}
+            </div>
+          );
+        })
+      }
+    </div>
+
+    <div
+      class="bg-linear-to-br from-primary/10 via-transparent to-primary/5 border border-primary/30 rounded-xl p-8 sm:p-12 text-center"
+    >
+      <div
+        class="inline-block bg-primary/20 text-primary px-4 py-2 rounded-full text-sm font-semibold mb-6 border border-primary/50"
+      >
+        Respuesta Inmediata Garantizada
+      </div>
+      <h3 class="text-3xl sm:text-4xl font-bold font-montserrat mb-4">
+        No esperes, actúa ahora
+      </h3>
+      <p class="text-foreground/70 mb-8 text-lg">
+        Atención rápida de 8 AM a 11 PM. Disponible para emergencias.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a
+          href=`https://wa.me/${wa}`
+          class="bg-primary text-primary-foreground px-8
+        py-4 rounded-lg font-semibold hover:shadow-lg hover:shadow-primary/50
+        transition-all inline-flex items-center justify-center gap-2 group"
+        >
+          Quiero solución inmediata
+          <ArrowRight
+            class="w-4 h-4 group-hover:translate-x-1 transition-transform"
+          />
+        </a>
+        <a
+          href=`https://wa.me/${wa}`
+          class="border border-primary text-primary px-8
+        py-4 rounded-lg font-semibold hover:bg-primary/10 transition-colors
+        inline-flex items-center justify-center"
+        >
+          Hablar por WhatsApp ahora
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

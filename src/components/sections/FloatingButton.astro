@@ -1,0 +1,54 @@
+---
+import MessageCircle from "../icons/MessageCircle.astro";
+const wa = import.meta.env.PUBLIC_WHATSAPP || "51";
+const messages = [
+  "👋 ¡Hola!",
+  "🔧 ¿Tu equipo falló?",
+  "💬 Escríbenos ahora",
+  "⚡ Atención inmediata",
+];
+---
+
+<div class="fixed bottom-6 right-6 z-40 flex items-center gap-3">
+  <div
+    id="bubble"
+    class="bg-card border border-border text-foreground text-sm font-medium ps-2 pe-3 py-2 rounded-2xl rounded-br-none shadow-lg max-w-48 text-right transition-all duration-500 opacity-0 translate-y-2"
+  >
+    👋 ¡Hola!
+  </div>
+
+  <a
+    target="_blank"
+    href={`https://wa.me/${wa}`}
+    class="bg-primary text-primary-foreground rounded-full p-4 shadow-lg hover:shadow-xl hover:shadow-primary/50 transition-all hover:scale-110 flex items-center justify-center"
+    title="¿Necesitas ayuda?"
+  >
+    <MessageCircle class="w-6 h-6" />
+  </a>
+</div>
+
+<script define:vars={{ messages }}>
+  const bubble = document.getElementById("bubble");
+  let current = 0;
+
+  function showMessage() {
+    // Ocultar
+    bubble.classList.add("opacity-0", "translate-y-2");
+
+    setTimeout(() => {
+      // Cambiar texto
+      bubble.textContent = messages[current];
+      current = (current + 1) % messages.length;
+
+      // Mostrar
+      bubble.classList.remove("opacity-0", "translate-y-2");
+    }, 500);
+  }
+
+  // Mostrar el primero después de 1 segundo
+  setTimeout(() => {
+    showMessage();
+    // Rotar mensajes cada 3 segundos
+    setInterval(showMessage, 5000);
+  }, 1000);
+</script>
