@@ -1,0 +1,151 @@
+---
+import MapPin from "../icons/MapPin.astro";
+
+interface Props {
+    title?: string;
+    description?: string;
+    buttonText?: string;
+    buttonLink?: string;
+    className?: string;
+}
+
+const {
+    title = "Nos ubicamos aquí",
+    description = "Jr. Los Andes 123, Surco, Lima",
+    buttonText = "Ver ubicación",
+    buttonLink = "https://maps.google.com",
+    className = "",
+} = Astro.props;
+---
+
+<style>
+    @keyframes slideUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes float {
+        0%,
+        100% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(-8px);
+        }
+    }
+
+    .location-card {
+        animation: slideUp 0.6s ease-out forwards;
+        animation-delay: 0.3s;
+        opacity: 0;
+        transition: transform 0.3s ease;
+    }
+
+    .location-card:hover {
+        transform: translateY(-8px);
+    }
+
+    .glassmorphism {
+        background: rgba(31, 40, 51, 0.75);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(102, 252, 241, 0.2);
+        box-shadow:
+            0 8px 32px 0 rgba(102, 252, 241, 0.1),
+            inset 0 1px 1px 0 rgba(255, 255, 255, 0.1);
+    }
+
+    .location-card:hover .glassmorphism {
+        background: rgba(31, 40, 51, 0.85);
+        border-color: rgba(102, 252, 241, 0.3);
+        box-shadow:
+            0 12px 48px 0 rgba(102, 252, 241, 0.15),
+            inset 0 1px 1px 0 rgba(255, 255, 255, 0.15);
+    }
+
+    .icon-wrapper {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 48px;
+        height: 48px;
+        border-radius: 12px;
+        background: rgba(102, 252, 241, 0.1);
+        color: #66fcf1;
+        margin-bottom: 16px;
+    }
+
+    .button-hover-effect {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .button-hover-effect::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: rgba(102, 252, 241, 0.1);
+        transition: left 0.3s ease;
+    }
+
+    .button-hover-effect:hover::before {
+        left: 100%;
+    }
+</style>
+
+<div class={`location-card ${className}`}>
+    <div class="glassmorphism rounded-2xl p-4 w-full max-w-sm flex gap-4 items-center">
+        <!-- Icon -->
+        <div class="icon-wrapper">
+            <MapPin class="w-6 h-6" size={24} />
+        </div>
+
+        <!-- Content -->
+        <div class="space-y-2">
+            <div>
+                <h3 class="text-xl font-bold text-primary font-montserrat">
+                    {title}
+                </h3>
+                <p class="text-sm text-foreground/80">
+                    {description}
+                </p>
+            </div>
+
+            <!-- Button -->
+            <a
+                href={buttonLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="button-hover-effect inline-flex items-center justify-center gap-2 w-full px-3 py-2 rounded-lg bg-primary/20 text-primary hover:bg-primary/30 transition-all duration-300 font-semibold text-sm border border-primary/40 hover:border-primary/60"
+            >
+                <span>{buttonText}</span>
+                <svg
+                    class="w-4 h-4 transition-transform group-hover:translate-x-1"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                >
+                    <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M9 5l7 7-7 7"></path>
+                </svg>
+            </a>
+        </div>
+
+        <!-- Decorative gradient line -->
+        <div
+            class="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent"
+        >
+        </div>
+    </div>
+</div>
