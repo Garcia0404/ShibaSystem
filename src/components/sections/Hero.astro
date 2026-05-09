@@ -70,27 +70,26 @@ const address = import.meta.env.PUBLIC_ADDRESS;
       </div>
     </div>
 
-    <div
-      class="relative h-96 rounded-2xl overflow-hidden border border-border/20"
-    >
-      <img
-        src="/repairing-laptop.png"
-        alt="Reparación de tecnología"
-        class="w-full h-full object-cover opacity-40"
-      />
-      <div
-        class="absolute inset-0 bg-linear-to-t from-background via-transparent to-transparent"
-      >
-      </div>
-
+    <div class="relative h-full flex flex-col gap-6 md:gap-8">
       <!-- Floating Location Card -->
-      <div class="absolute inset-0 flex items-end justify-end p-6 md:p-8">
+      <div class="flex items-end justify-end">
         <LocationCard
           title="Nos ubicamos aquí"
           description={address}
           buttonText="Ver ubicación"
           buttonLink="https://www.google.com/maps/place/Shiba+Center/@-11.9599315,-77.0821941,17z/data=!3m1!4b1!4m15!1m8!3m7!1s0x9105cf7127eabcb9:0x3cdcf24f623d3231!2sShiba+Center!8m2!3d-11.9599368!4d-77.0796192!10e1!16s%2Fg%2F11rpt7f7rl!3m5!1s0x9105cf7127eabcb9:0x3cdcf24f623d3231!8m2!3d-11.9599368!4d-77.0796192!16s%2Fg%2F11rpt7f7rl?entry=ttu&g_ep=EgoyMDI2MDUwMi4wIKXMDSoASAFQAw%3D%3D"
         />
+      </div>
+      <div class="h-96 border border-border/20 rounded-2xl overflow-hidden">
+        <img
+          src="/repairing-laptop.png"
+          alt="Reparación de tecnología"
+          class="w-full h-full object-cover opacity-40"
+        />
+        <div
+          class="absolute inset-0 bg-linear-to-t from-background via-transparent to-transparent"
+        >
+        </div>
       </div>
     </div>
   </div>
