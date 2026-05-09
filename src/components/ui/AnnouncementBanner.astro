@@ -1,7 +1,8 @@
 ---
 import Gift from "../icons/Gift.astro";
 import ChevronRight from "../icons/ChevronRight.astro";
-const wa = import.meta.env.PUBLIC_WHATSAPP;
+import { siteConfig } from "../../config";
+const wa = siteConfig.phone.replace(/\D/g, "");
 ---
 
 <div

@@ -4,14 +4,15 @@ import Clock from "../icons/Clock.astro";
 import Phone from "../icons/Phone.astro";
 import MessageCircle from "../icons/MessageCircle.astro";
 import ArrowRight from "../icons/ArrowRight.astro";
+import { siteConfig } from "../../config";
 
-const wa = import.meta.env.PUBLIC_WHATSAPP;
-const address = import.meta.env.PUBLIC_ADDRESS;
+const wa = siteConfig.phone;
+const address = siteConfig.address;
 const contactInfo = [
   {
     icon: MapPin,
     title: "Ubicación",
-    content: `${address}<br />San Martín de Porres, Lima`,
+    content: `${address}`,
     isHtml: true,
   },
   {
@@ -23,13 +24,13 @@ const contactInfo = [
   {
     icon: Phone,
     title: "Teléfono",
-    href: `https://wa.me/${wa}`,
-    linkText: `+${wa}`,
+    href: `https://wa.me/${wa.replace(/\D/g, "")}`,
+    linkText: `${wa}`,
   },
   {
     icon: MessageCircle,
     title: "WhatsApp",
-    href: `https://wa.me/${wa}`,
+    href: `https://wa.me/${wa.replace(/\D/g, "")}`,
     linkText: "Escríbenos aquí",
   },
 ];

@@ -2,8 +2,9 @@
 import ArrowRight from "../icons/ArrowRight.astro";
 import Bolt from "../icons/Bolt.astro";
 import AlertCircle from "../icons/AlertCircle.astro";
+import { siteConfig } from "../../config";
 
-const wa = import.meta.env.PUBLIC_WHATSAPP;
+const wa = siteConfig.phone.replace(/\D/g, "");
 ---
 
 <section class="py-20 px-4 sm:px-6 lg:px-8 bg-card border-y border-border">

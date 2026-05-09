@@ -1,8 +1,9 @@
 ---
 import ChevronRight from "../icons/ChevronRight.astro";
 import LocationCard from "./LocationCard.astro";
-const wa = import.meta.env.PUBLIC_WHATSAPP;
-const address = import.meta.env.PUBLIC_ADDRESS;
+import { siteConfig } from "../../config";
+const wa = siteConfig.phone.replace(/\D/g, "");
+const address = siteConfig.address;
 ---
 
 <section class="py-20 px-4 sm:px-6 lg:px-8">

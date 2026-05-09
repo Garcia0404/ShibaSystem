@@ -1,6 +1,8 @@
 ---
+import { siteConfig } from "../../config";
 import MessageCircle from "../icons/MessageCircle.astro";
-const wa = import.meta.env.PUBLIC_WHATSAPP || "51";
+
+const wa = siteConfig.phone.replace(/\D/g, "");
 const messages = [
   "👋 ¡Hola!",
   "🔧 ¿Tu equipo falló?",
