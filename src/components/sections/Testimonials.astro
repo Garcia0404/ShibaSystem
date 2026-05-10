@@ -1,4 +1,6 @@
 ---
+import ChevronLeft from "../icons/ChevronLeft.astro";
+
 const testimonials = [
   {
     name: "Carlos Mendoza",
@@ -15,12 +17,27 @@ const testimonials = [
     text: "Excelente atención a domicilio. Llegaron rápido, profesionales y solucionaron el problema. Los recomiendo.",
     rating: 5,
   },
+  {
+    name: "Ana Rodríguez",
+    text: "Mi computadora estaba lentísima y no sabía qué hacer. El técnico fue muy amable y explicó todo claramente.",
+    rating: 5,
+  },
+  {
+    name: "José Martínez",
+    text: "Tuve un problema con mi teléfono y pensé que estaba perdido. Vinieron a mi casa, lo repararon en minutos. Servicio increíble.",
+    rating: 5,
+  },
+  {
+    name: "Laura Sánchez",
+    text: "Confiable, puntual y profesional. Repararon mi televisor a un precio justo. Ya los recomendé a toda mi familia.",
+    rating: 5,
+  },
 ];
 ---
 
 <section
   id="testimonials"
-  class="py-20 px-4 sm:px-6 lg:px-8 bg-card/30 border-t border-border"
+  class="py-20 px-4 sm:px-12 lg:px-8 bg-card/30 border-t border-border"
 >
   <div class="max-w-6xl mx-auto">
     <div class="text-center mb-16">
@@ -32,22 +49,59 @@ const testimonials = [
       </p>
     </div>
 
-    <div class="grid md:grid-cols-3 gap-8">
-      {
-        testimonials.map((testimonial) => (
-          <div class="bg-background border border-border/50 rounded-xl p-8">
-            <div class="flex gap-1 mb-4">
-              {[...Array(testimonial.rating)].map(() => (
-                <span class="text-primary text-lg">★</span>
-              ))}
+    <div class="relative flex items-center">
+      <button
+        class="absolute top-1/2 -translate-y-1/2 -left-2 xl:-left-15 grid place-items-center bg-primary text-primary-foreground h-9 w-9 md:h-12 md:w-12 rounded-full cursor-pointer transition-all duration-300 z-10 border-none hover:bg-secondary hover:scale-110 carousel-btn-left"
+        aria-label="Anterior"
+      >
+        <ChevronLeft class="w-5 h-5" />
+      </button>
+
+      <div
+        class="flex gap-4 xl:gap-9 overflow-x-auto no-scrollbar carousel snap-x mask-r-from-90%"
+      >
+        {
+          testimonials.map((testimonial) => (
+            <div class="bg-background border border-border/50 rounded-xl p-8 w-90 shrink-0 flex flex-col snap-start">
+              <div class="flex gap-1 mb-2 md:mb-4">
+                {[...Array(testimonial.rating)].map(() => (
+                  <span class="text-primary text-lg">★</span>
+                ))}
+              </div>
+              <p class="text-foreground/80 mb-2 md:mb-4 leading-relaxed line-clamp-3">
+                "{testimonial.text}"
+              </p>
+              <div class="font-semibold font-montserrat flex-1 flex items-end">
+                {testimonial.name}
+              </div>
             </div>
-            <p class="text-foreground/80 mb-4 leading-relaxed">
-              "{testimonial.text}"
-            </p>
-            <div class="font-semibold font-montserrat">{testimonial.name}</div>
-          </div>
-        ))
-      }
+          ))
+        }
+      </div>
+
+      <button
+        class="absolute top-1/2 -translate-y-1/2 -right-2 xl:-right-15 grid place-items-center bg-primary text-primary-foreground h-9 w-9 md:h-12 md:w-12 rounded-full cursor-pointer transition-all duration-300 z-10 border-none hover:bg-secondary hover:scale-110 carousel-btn-right"
+        aria-label="Siguiente"
+      >
+        <ChevronLeft class="w-5 h-5 rotate-180" />
+      </button>
     </div>
   </div>
 </section>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const leftBtn = document.querySelector(".carousel-btn-left");
+    const rightBtn = document.querySelector(".carousel-btn-right");
+    const carousel = document.querySelector(".carousel");
+    const scrollAmount = 300;
+
+    leftBtn?.addEventListener("click", () => {
+      carousel?.scrollBy({ left: -scrollAmount, behavior: "smooth" });
+    });
+
+    rightBtn?.addEventListener("click", () => {
+      carousel?.scrollBy({ left: scrollAmount, behavior: "smooth" });
+    });
+  });
+</script>
