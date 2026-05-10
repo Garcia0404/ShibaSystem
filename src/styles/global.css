@@ -1,5 +1,17 @@
 @import 'tailwindcss';
 
+@keyframes slideUp {
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
 @custom-variant dark (&:is(.dark *));
 
 :root {
@@ -36,6 +48,10 @@
   --sidebar-accent-foreground: #C5C6C7;
   --sidebar-border: #45A29E;
   --sidebar-ring: #66FCF1;
+}
+
+@theme {
+  --animate-slide-up: slideUp 0.6s ease-out forwards;
 }
 
 @theme inline {
@@ -83,6 +99,7 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }
